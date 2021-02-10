@@ -162,12 +162,13 @@ template <class T> int Node<T>::calculateHeightUtility(Node<T> * curr) {
     if (curr == nullptr) return -1;
     
     int recursiveHeight = (1 + std::max(calculateHeightUtility(curr->getLeft()), calculateHeightUtility(curr->getRight())));
+    curr->setHeight(recursiveHeight);
     return recursiveHeight;
 }
 
 template <class T> int Node<T>::calculateHeight() {
     int recursiveHeight = calculateHeightUtility(this);
-    if (recursiveHeight != -1) setHeight(recursiveHeight);
+//    if (recursiveHeight != -1) setHeight(recursiveHeight);
     return recursiveHeight;
 }
 
@@ -175,12 +176,13 @@ template <class T> int Node<T>::calculateMinHeightUtility(Node<T> * curr) {
     if (curr == nullptr) return -1;
     
     int recursiveMinHeight = (1 + std::min(calculateMinHeightUtility(curr->getLeft()), calculateMinHeightUtility(curr->getRight())));
+    curr->setMinHeight(recursiveMinHeight);
     return recursiveMinHeight;
 }
 
 template <class T> int Node<T>::calculateMinHeight() {
     int recursiveMinHeight = calculateMinHeightUtility(this);
-    if (recursiveMinHeight != -1) setMinHeight(recursiveMinHeight);
+//    if (recursiveMinHeight != -1) setMinHeight(recursiveMinHeight);
     return recursiveMinHeight;
 }
 

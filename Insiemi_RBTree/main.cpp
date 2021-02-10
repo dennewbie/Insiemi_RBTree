@@ -6,8 +6,17 @@
 //
 
 #include "Node.hpp"
+#include <iostream>
 
 int main() {
-    Node<float> temp = Node<float>(3, 10.33);
+    Node<float> * temp_1 = new Node<float>(3, 10.33);
+    Node<float> * temp_2 = new Node<float>(4, 10.33);
+    
+    temp_1->setLeft(temp_2);
+    int height = temp_1->calculateHeight();
+    int minHeight = temp_1->calculateMinHeight();
+    std::cout << "HEIGHT: " << height << "\n";
+    std::cout << "MIN_HEIGHT: " << minHeight << "\n";
+    
     return 0;
 }

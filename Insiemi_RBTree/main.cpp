@@ -5,7 +5,7 @@
 //  Created by Denny Caruso on 10/02/21.
 //
 
-#include "RedBlackTree.hpp"
+#include "Set.hpp"
 
 int main() {
 /*
@@ -106,5 +106,8 @@ int main() {
     std::cout << "PREORDER: \n\n";
     redBlackTree.preorderVisit(redBlackTree.getRoot());
     std::cout << "\n\n";
+    
+
+    Set<float> tempSet = Set<float>();
     return 0;
 }

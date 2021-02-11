@@ -67,8 +67,8 @@ public:
     void setKey(int newKey);
     void setColor(bool newColor);
     void setParent(Node<T> * newParent);
-    void setLeft(Node *newLeft);
-    void setRight(Node *newRight);
+    void setLeft(Node<T> * newLeft);
+    void setRight(Node<T> * newRight);
     void setData(T newData);
     /*
      
@@ -140,6 +140,7 @@ template <class T> void Node<T>::setData(T newData) {
 //template <class T> void Node<T>::setBlackHeight(int newBlackHeight) {
 //    this->blackHeight = newBlackHeight;
 //}
+
 
 // Implementazion Metodi Pubblici Getters
 template <class T> int Node<T>::getKey() {

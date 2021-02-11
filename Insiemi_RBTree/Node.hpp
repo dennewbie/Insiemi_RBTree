@@ -8,7 +8,7 @@
 #ifndef Node_hpp
 #define Node_hpp
 
-#include <algorithm>
+//#include <algorithm>
 
 enum color { BLACK, RED };
 
@@ -20,6 +20,9 @@ private:
     Node<T> * left;
     Node<T> * right;
     T data;
+    
+    /*
+     
     int height;
     int minHeight;
     int blackHeight;
@@ -27,14 +30,20 @@ private:
     int calculateHeightUtility(Node<T> * curr);
     int calculateMinHeightUtility(Node<T> * curr);
 //    std::pair<int, int> calculateHeightMinHeightUtility(Node<T> * curr);
+     
+     */
     
 public:
     // Costruttore Default con impostazione aggiunta del colore a BLACK
     Node() : parent { nullptr }, left { nullptr }, right { nullptr } {
         setColor(BLACK);
+        /*
+         
         setHeight(0);
         setMinHeight(0);
         setBlackHeight(0);
+        
+        */
     }
     
     // Costruttore custom con impostazione del campo key, data e color
@@ -42,9 +51,13 @@ public:
         setKey(key);
         setColor(BLACK);  // doubt here <???> there wasn't on code of lesson exercise #14.1
         setData(data);
+        /*
+         
         setHeight(0);
         setMinHeight(0);
         setBlackHeight(0);
+         
+         */
     }
     
     // Distruttore
@@ -57,9 +70,13 @@ public:
     void setLeft(Node *newLeft);
     void setRight(Node *newRight);
     void setData(T newData);
+    /*
+     
     void setHeight(int newHeight);
     void setMinHeight(int newMinHeight);
     void setBlackHeight(int newBlackHeight);
+     
+     */
     
     
     // Metodi Pubblici Getters
@@ -69,6 +86,9 @@ public:
     Node<T> * getLeft();
     Node<T> * getRight();
     T & getData();
+    
+    /*
+     
     int getHeight();
     int getMinHeight();
     int getBlackHeight();
@@ -79,6 +99,8 @@ public:
     int calculateMinHeight();
 //    std::pair<int, int> calculateHeightMinHeight();
     void calculateBlackHeight();
+     
+     */
 };
 
 
@@ -106,18 +128,18 @@ template <class T> void Node<T>::setRight(Node<T> * newRight) {
 template <class T> void Node<T>::setData(T newData) {
     this->data = newData;
 }
-
-template <class T> void Node<T>::setHeight(int newHeight) {
-    this->height = newHeight;
-}
-
-template <class T> void Node<T>::setMinHeight(int newMinHeight) {
-    this->minHeight = newMinHeight;
-}
-
-template <class T> void Node<T>::setBlackHeight(int newBlackHeight) {
-    this->blackHeight = newBlackHeight;
-}
+//
+//template <class T> void Node<T>::setHeight(int newHeight) {
+//    this->height = newHeight;
+//}
+//
+//template <class T> void Node<T>::setMinHeight(int newMinHeight) {
+//    this->minHeight = newMinHeight;
+//}
+//
+//template <class T> void Node<T>::setBlackHeight(int newBlackHeight) {
+//    this->blackHeight = newBlackHeight;
+//}
 
 // Implementazion Metodi Pubblici Getters
 template <class T> int Node<T>::getKey() {
@@ -143,48 +165,48 @@ template <class T> Node<T> * Node<T>::getRight() {
 template <class T> T & Node<T>::getData() {
     return this->data;
 }
-
-template <class T> int Node<T>::getHeight() {
-    return this->height;
-}
-
-template <class T> int Node<T>::getMinHeight() {
-    return this->minHeight;
-}
-
-template <class T> int Node<T>::getBlackHeight() {
-    return this->blackHeight;
-}
+//
+//template <class T> int Node<T>::getHeight() {
+//    return this->height;
+//}
+//
+//template <class T> int Node<T>::getMinHeight() {
+//    return this->minHeight;
+//}
+//
+//template <class T> int Node<T>::getBlackHeight() {
+//    return this->blackHeight;
+//}
 
 
 // Implementazione Metodi Pubblici Ulteriori
-template <class T> int Node<T>::calculateHeightUtility(Node<T> * curr) {
-    if (curr == nullptr) return -1;
-    
-    int recursiveHeight = (1 + std::max(calculateHeightUtility(curr->getLeft()), calculateHeightUtility(curr->getRight())));
-    curr->setHeight(recursiveHeight);
-    return recursiveHeight;
-}
-
-template <class T> int Node<T>::calculateHeight() {
-    int recursiveHeight = calculateHeightUtility(this);
-//    if (recursiveHeight != -1) setHeight(recursiveHeight);
-    return recursiveHeight;
-}
-
-template <class T> int Node<T>::calculateMinHeightUtility(Node<T> * curr) {
-    if (curr == nullptr) return -1;
-    
-    int recursiveMinHeight = (1 + std::min(calculateMinHeightUtility(curr->getLeft()), calculateMinHeightUtility(curr->getRight())));
-    curr->setMinHeight(recursiveMinHeight);
-    return recursiveMinHeight;
-}
-
-template <class T> int Node<T>::calculateMinHeight() {
-    int recursiveMinHeight = calculateMinHeightUtility(this);
-//    if (recursiveMinHeight != -1) setMinHeight(recursiveMinHeight);
-    return recursiveMinHeight;
-}
+//template <class T> int Node<T>::calculateHeightUtility(Node<T> * curr) {
+//    if (curr == nullptr) return -1;
+//
+//    int recursiveHeight = (1 + std::max(calculateHeightUtility(curr->getLeft()), calculateHeightUtility(curr->getRight())));
+//    curr->setHeight(recursiveHeight);
+//    return recursiveHeight;
+//}
+//
+//template <class T> int Node<T>::calculateHeight() {
+//    int recursiveHeight = calculateHeightUtility(this);
+////    if (recursiveHeight != -1) setHeight(recursiveHeight);
+//    return recursiveHeight;
+//}
+//
+//template <class T> int Node<T>::calculateMinHeightUtility(Node<T> * curr) {
+//    if (curr == nullptr) return -1;
+//
+//    int recursiveMinHeight = (1 + std::min(calculateMinHeightUtility(curr->getLeft()), calculateMinHeightUtility(curr->getRight())));
+//    curr->setMinHeight(recursiveMinHeight);
+//    return recursiveMinHeight;
+//}
+//
+//template <class T> int Node<T>::calculateMinHeight() {
+//    int recursiveMinHeight = calculateMinHeightUtility(this);
+////    if (recursiveMinHeight != -1) setMinHeight(recursiveMinHeight);
+//    return recursiveMinHeight;
+//}
 
 //
 //template <class T> std::pair<int, int> Node<T>::calculateHeightMinHeightUtility(Node<T> * curr) {
@@ -203,10 +225,10 @@ template <class T> int Node<T>::calculateMinHeight() {
 //    return height_minHeight;
 //}
 
-
-template <class T> void Node<T>::calculateBlackHeight() {
-    
-}
+//
+//template <class T> void Node<T>::calculateBlackHeight() {
+//
+//}
 
 
 #endif /* Node_hpp */

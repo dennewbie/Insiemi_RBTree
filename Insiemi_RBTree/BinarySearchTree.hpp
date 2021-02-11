@@ -10,6 +10,7 @@
 
 #include "Node.hpp"
 #include <iostream>
+#include <vector>
 
 template <class T> class BinarySearchTree {
 private:
@@ -31,7 +32,7 @@ public:
     }
     
     // Distruttore
-    virtual ~BinarySearchTree() { }
+    virtual ~BinarySearchTree();
     
     
     // Metodi Get Pubblici
@@ -41,6 +42,17 @@ public:
     
     // Metodi Ulteriori Pubblici
     void insertNode(int key, T data);
+    void deleteNode(Node<T> *  nodeToDelete);
+    Node<T> * getMinimum(Node<T> * current);
+    Node<T> * getMaximum(Node<T> * current);
+    Node<T> * getPredecessor(Node<T> * current);
+    Node<T> * getSuccessor(Node<T> * current);
+    Node<T> * searchNode(int key, Node<T> *current);
+    void preorderVisit(Node <T> * current);
+    void inorderVisit(Node <T> * current);
+    void postorderVisit(Node <T> * current);
+    std::vector<Node<T>> * buildSortedArray();
+    void inorderVisitBuildArray(Node <T> * current, std::vector<Node<T>> * sortedArray);
 };
 
 
@@ -59,9 +71,9 @@ template <class T> void BinarySearchTree<T>::transplant(Node<T> * to, Node<T> * 
 
 
 // Implementazione Distruttore
-//template <class T> BinarySearchTree<T>::~BinarySearchTree() {
-//    while (this->getRoot() != getNilTNode()) deleteNode(getRoot()->getKey());
-//}
+template <class T> BinarySearchTree<T>::~BinarySearchTree() {
+    while (this->getRoot() != getNilTNode()) deleteNode(getRoot());
+}
 
 
 // Implementazione Metodi Set Protetti
@@ -107,6 +119,113 @@ template <class T> void BinarySearchTree<T>::insertNode(int key, T data) {
         parentNode->setLeft(nodeToInsert);
     } else {
         parentNode->setRight(nodeToInsert);
+    }
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getMinimum(Node<T> * current) {
+    while (current->getLeft() != getNilTNode()) current = current->getLeft();
+    return current;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getMaximum(Node<T> * current) {
+    while (current->getRight() != getNilTNode()) current = current->getRight();
+    return current;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getPredecessor(Node<T> * current) {
+    if (current->getLeft() != getNilTNode()) return getMaximum(current->getLeft());
+    
+    Node<T> * parentNode = current->getParent();
+    while (parentNode != getNilTNode() && current == (parentNode->getLeft())) {
+        current = parentNode;
+        parentNode = parentNode->getParent();
+    }
+    
+    return parentNode;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getSuccessor(Node<T> * current) {
+    if (current->getRight() != getNilTNode()) return getMinimum(current->getRight());
+    
+    Node<T> * parentNode = current->getParent();
+    while (parentNode != getNilTNode() && current == (parentNode->getRight())) {
+        current = parentNode;
+        parentNode = parentNode->getParent();
+    }
+    
+    return parentNode;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::searchNode(int key, Node <T> * current) {
+    if (current == getNilTNode()) return nullptr;
+    if (key == current->getKey()) return current;
+    if (key < current->getKey()) {
+        return searchNode(key, current->getLeft());
+    } else {
+        return searchNode(key, current->getRight());
+    }
+}
+
+template <class T> void BinarySearchTree<T>::preorderVisit(Node <T> * current) {
+    if (current != getNilTNode()) {
+        std::cout << current->getKey() << " ";
+        if (current->getLeft() != getNilTNode()) preorderVisit(current->getLeft());
+        if (current->getRight() != getNilTNode()) preorderVisit(current->getRight());
+    }
+}
+
+template <class T> void BinarySearchTree<T>::inorderVisit(Node <T> * current) {
+    if (current != getNilTNode()) {
+        if (current->getLeft() != getNilTNode()) inorderVisit(current->getLeft());
+        std::cout << current->getKey() << " ";
+        if (current->getRight() != getNilTNode()) inorderVisit(current->getRight());
+    }
+}
+
+template <class T> void BinarySearchTree<T>::postorderVisit(Node <T> * current) {
+    if (current != getNilTNode()) {
+        if (current->getLeft() != getNilTNode()) postorderVisit(current->getLeft());
+        if (current->getRight() != getNilTNode()) postorderVisit(current->getRight());
+        std::cout << current->getKey() << " ";
+    }
+}
+
+template <class T> std::vector<Node<T>> * BinarySearchTree<T>::buildSortedArray() {
+    std::vector<Node<T>> * sortedArray = new std::vector<Node<T>>;
+    inorderVisitBuildArray(getRoot(), sortedArray);
+    
+    return sortedArray;
+}
+
+template <class T> void BinarySearchTree<T>::inorderVisitBuildArray(Node <T> * current, std::vector<Node<T>> * sortedArray) {
+    if (current != getNilTNode()) {
+        if (current->getLeft() != getNilTNode()) inorderVisitBuildArray(current->getLeft(), sortedArray);
+        sortedArray->push_back(*current);
+        if (current->getRight() != getNilTNode()) inorderVisitBuildArray(current->getRight(), sortedArray);
+    }
+}
+
+template <class T> void BinarySearchTree<T>::deleteNode(Node<T> *  nodeToDelete) {
+    if (nodeToDelete == getNilTNode()) return;
+    
+    if (nodeToDelete->getLeft() == getNilTNode()) {
+        transplant(nodeToDelete, nodeToDelete->getRight());
+    } else if (nodeToDelete->getRight() == getNilTNode()) {
+        transplant(nodeToDelete, nodeToDelete->getLeft());
+    } else {
+        Node<T> * successor = getMinimum(nodeToDelete->getRight());
+        
+        if ((successor->getParent())->getKey() != nodeToDelete->getKey()) {
+            transplant(successor, successor->getRight());
+            successor->setRight(nodeToDelete->getRight());
+            (successor->getRight())->setParent(successor);
+        }
+        
+        transplant(nodeToDelete, successor);
+        successor->setLeft(nodeToDelete->getLeft());
+        (successor->getLeft())->setParent(successor);
+        
+        delete nodeToDelete;
     }
 }
 

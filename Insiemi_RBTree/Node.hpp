@@ -85,7 +85,7 @@ public:
     Node<T> * getParent();
     Node<T> * getLeft();
     Node<T> * getRight();
-    T & getData();
+    T getData();
     
     /*
      
@@ -162,7 +162,7 @@ template <class T> Node<T> * Node<T>::getRight() {
     return this->right;
 }
 
-template <class T> T & Node<T>::getData() {
+template <class T> T Node<T>::getData() {
     return this->data;
 }
 //

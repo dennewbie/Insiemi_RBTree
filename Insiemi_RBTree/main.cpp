@@ -5,7 +5,7 @@
 //  Created by Denny Caruso on 10/02/21.
 //
 
-#include "Node.hpp"
+#include "BinarySearchTree.hpp"
 #include <iostream>
 
 int main() {
@@ -19,11 +19,16 @@ int main() {
 //    int minHeight = temp_1->calculateMinHeight();
 //    std::cout << "HEIGHT: " << height << "\n";
 //    std::cout << "MIN_HEIGHT: " << minHeight << "\n";
-//    
-//    
+//
+//
 //    std::cout << "HEIGHT temp2: " << temp_2->getHeight() << "\n";
 //    std::cout << "MIN_HEIGHT temp2: " << temp_2->getMinHeight() << "\n";
 //    std::cout << "HEIGHT temp3: " << temp_3->getHeight() << "\n";
 //    std::cout << "MIN_HEIGHT temp3: " << temp_3->getMinHeight() << "\n";
+    
+    BinarySearchTree<float> bst;
+    bst.insertNode(3, 10.33);
+    bst.insertNode(1, 10.33);
+    bst.insertNode(3, 10.33);
     return 0;
 }

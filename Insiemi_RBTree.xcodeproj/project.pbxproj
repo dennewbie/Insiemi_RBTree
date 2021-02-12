@@ -29,6 +29,7 @@
 		528E512425D53A6900712C7D /* BinarySearchTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinarySearchTree.hpp; sourceTree = "<group>"; };
 		528E512E25D58A0F00712C7D /* RedBlackTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RedBlackTree.hpp; sourceTree = "<group>"; };
 		528E513325D5BC8500712C7D /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
+		52F0F0AE25D6B09400754C9A /* Sets.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Sets.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				52651E3C25D4755A008FEF13 /* main.cpp */,
-				52651E4525D475A2008FEF13 /* Node.hpp */,
+				52F0F0AE25D6B09400754C9A /* Sets.hpp */,
 				528E513325D5BC8500712C7D /* Set.hpp */,
-				528E512425D53A6900712C7D /* BinarySearchTree.hpp */,
 				528E512E25D58A0F00712C7D /* RedBlackTree.hpp */,
+				528E512425D53A6900712C7D /* BinarySearchTree.hpp */,
+				52651E4525D475A2008FEF13 /* Node.hpp */,
 			);
 			path = Insiemi_RBTree;
 			sourceTree = "<group>";

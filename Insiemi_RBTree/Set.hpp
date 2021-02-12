@@ -9,7 +9,6 @@
 #define Set_hpp
 
 #include "RedBlackTree.hpp"
-#include <iterator>
 
 template <class T> class Set: /*private*/ public RedBlackTree<T> {
 private:

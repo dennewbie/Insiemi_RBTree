@@ -79,7 +79,29 @@ public:
 };
 
 
-// Implementazione Metodi Privati
+// Implementazione Distruttore
+template <class T> BinarySearchTree<T>::~BinarySearchTree() {
+    while (this->getRoot() != getNilTNode()) deleteNode(getRoot());
+}
+
+
+// Implementazione Metodi Set
+template <class T> void BinarySearchTree<T>::setRoot(Node<T> * newRoot) {
+    this->root = newRoot;
+}
+
+
+// Implementazione Metodi Get
+template <class T> Node<T> * BinarySearchTree<T>::getRoot() {
+    return this->root;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getNilTNode() {
+    return this->nilTNode;
+}
+
+
+// Implementazione Metodi Ulteriori
 template <class T> void BinarySearchTree<T>::transplant(Node<T> * to, Node<T> * from) {
     if (to->getParent() == getNilTNode()) {
         setRoot(from);
@@ -100,20 +122,6 @@ template <class T> void BinarySearchTree<T>::inorderVisitBuildArray(Node <T> * c
     }
 }
 
-
-// Implementazione Distruttore
-template <class T> BinarySearchTree<T>::~BinarySearchTree() {
-    while (this->getRoot() != getNilTNode()) deleteNode(getRoot());
-}
-
-
-// Implementazione Metodi Set Protetti
-template <class T> void BinarySearchTree<T>::setRoot(Node<T> * newRoot) {
-    this->root = newRoot;
-}
-
-
-// Implementazione Metodi Ulteriori Protetti
 template <class T> Node<T> * BinarySearchTree<T>::advancedInsertNode(int key, T data) {
     Node<T> * nodeToInsert = new Node<T>(key, data);
     nodeToInsert->setParent(getNilTNode());
@@ -204,18 +212,6 @@ template <class T> void BinarySearchTree<T>::resetNilT_Node() {
     this->getNilTNode()->setKey(0);
 }
 
-
-// Implementazione Metodi Get Pubblici
-template <class T> Node<T> * BinarySearchTree<T>::getRoot() {
-    return this->root;
-}
-
-template <class T> Node<T> * BinarySearchTree<T>::getNilTNode() {
-    return this->nilTNode;
-}
-
-
-// Implementazione Metodi Ulteriori Pubblici
 template <class T> Node<T> * BinarySearchTree<T>::getMinimum(Node<T> * current) {
     while (current->getLeft() != getNilTNode()) current = current->getLeft();
     return current;

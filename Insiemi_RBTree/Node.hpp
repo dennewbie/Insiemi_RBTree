@@ -104,7 +104,7 @@ public:
 };
 
 
-// Implementazion Metodi Pubblici Setters
+// Implementazion Metodi Setters
 template <class T> void Node<T>::setKey(int newKey) {
     this->key = newKey;
 }
@@ -142,7 +142,7 @@ template <class T> void Node<T>::setData(T newData) {
 //}
 
 
-// Implementazion Metodi Pubblici Getters
+// Implementazion Metodi Getters
 template <class T> int Node<T>::getKey() {
     return this->key;
 }

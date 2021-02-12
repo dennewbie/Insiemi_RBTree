@@ -36,7 +36,7 @@ public:
 };
 
 
-// Implementazione Metodi Ulteriori Privati
+// Implementazione Metodi Ulteriori
 template <class T> void RedBlackTree<T>::leftRotate(Node<T> * x) {
     Node <T> * y = x->getRight();
     x->setRight(y->getLeft());
@@ -145,8 +145,6 @@ template <class T> void RedBlackTree<T>::deleteFixUpRB(Node<T> * x) {
     x->setColor(BLACK);
 }
 
-
-// Implementazione Metodi Ulteriori Pubblici
 template <class T> void RedBlackTree<T>::insertNodeRB(int key, T data) {
 //    this->insertNode(key, data);
 //    Node<T> * x = this->searchNode(key, this->getRoot());

@@ -5,7 +5,7 @@
 //  Created by Denny Caruso on 10/02/21.
 //
 
-#include "Set.hpp"
+#include "Sets.hpp"
 
 int main() {
 /*
@@ -171,6 +171,9 @@ int main() {
     tempSet_5 = tempSet_1->differenceOperation(tempSet_2);
     tempSet_5->inorderVisit(tempSet_5->getRoot());
     
-    std::cout << "\nhere\n  ";
+    std::cout << "\nhere\n";
+    
+    Sets<float> temp_Sets_1 = Sets<float>("input.txt");
+    temp_Sets_1.printSets();
     return 0;
 }

@@ -140,7 +140,7 @@ int main() {
     }
     */
     
-    
+    /*
     Set<float> * tempSet_1 = new Set<float>();
     Set<float> * tempSet_2 = new Set<float>();
     
@@ -172,8 +172,68 @@ int main() {
     tempSet_5->inorderVisit(tempSet_5->getRoot());
     
     std::cout << "\nhere\n";
+    */
     
-    Sets<float> temp_Sets_1 = Sets<float>("input.txt");
+    
+    
+    /*
+    Sets<int> temp_Sets_1 = Sets<int>("input.txt");
     temp_Sets_1.printSets();
+    Set<int> * resultSet_1 = temp_Sets_1.requestSetOperation(unionOperationCode, 1, 2);
+//    std::cout << "\nUNION:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_2 = temp_Sets_1.requestSetOperation(intersectOperationCode, 1, 2);
+//    std::cout << "\nINTERSECT:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_3 = temp_Sets_1.requestSetOperation(differenceOperationCode, 1, 2);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+
+    Set<int> * resultSet_4 = temp_Sets_1.requestSetOperation(differenceOperationCode, 2, 1);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_5 = temp_Sets_1.requestSetOperation(unionOperationCode, 1, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_6 = temp_Sets_1.requestSetOperation(intersectOperationCode, 1, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_7 = temp_Sets_1.requestSetOperation(differenceOperationCode, 1, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_8 = temp_Sets_1.requestSetOperation(differenceOperationCode, 3, 1);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_9 = temp_Sets_1.requestSetOperation(unionOperationCode, 2, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_10 = temp_Sets_1.requestSetOperation(intersectOperationCode, 2, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_11 = temp_Sets_1.requestSetOperation(differenceOperationCode, 2, 3);
+//    std::cout << "\nDIFFERENCE:\n";
+//    temp_Sets_1.printSets();
+    
+    Set<int> * resultSet_12 = temp_Sets_1.requestSetOperation(differenceOperationCode, 3, 2);
+//    std::cout << "\nDIFFERENCE:\n";
+    temp_Sets_1.printSets();
+    */
+    
+    // TEST NULLPTR
+    /*
+    Sets<int> temp_Sets_1 = Sets<int>("input.txt");
+    Set<int> * resultSet_12 = temp_Sets_1.requestSetOperation(22, 3, 2);
+//    std::cout << "\nDIFFERENCE:\n";
+    temp_Sets_1.printSets();
+    */
     return 0;
 }

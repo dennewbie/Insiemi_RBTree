@@ -10,7 +10,7 @@
 
 #include "RedBlackTree.hpp"
 
-template <class T> class Set: /*private*/ public RedBlackTree<T> {
+template <class T> class Set: private /*public*/ RedBlackTree<T> {
 private:
     static unsigned int currID;     // Contatore
     unsigned int ID;                // Codice identificativo univoco dell'insieme
@@ -34,6 +34,7 @@ public:
     
     
     // Metodi Get Pubblici
+    unsigned int getCounterID();
     unsigned int getID();
     
     
@@ -41,23 +42,35 @@ public:
     Set<T> * unionOperation(Set<T> * secondSet);
     Set<T> * intersectOperation(Set<T> * secondSet);
     Set<T> * differenceOperation(Set<T> * secondSet);
+    void printSet();
+    void insertElement(int key, T data);
     // Test
 //    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
 };
 
 
 // Inizializzazione contatore Set
-template <class T> unsigned int Set<T>::currID = 0;
+template <class T> unsigned int Set<T>::currID = 1;
 
 
-// Implementazione Metodi Set Privati
+// Implementazione Metodi Set
 template <class T> void Set<T>::setID(unsigned int newID) {
     this->currID = newID - 1;
     this->ID--;
 }
 
 
-// Implementazione Metodi Ulteriori Privati
+// Implementazione Metodi Get
+template <class T> unsigned int Set<T>::getCounterID() {
+    return this->currID;
+}
+
+template <class T> unsigned int Set<T>::getID() {
+    return this->ID;
+}
+
+
+// Implementazione Metodi Ulteriori
 template <class T> std::vector<Node<T>> * Set<T>::merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet) {
     std::vector<Node<T>> * thirdSet = new std::vector<Node<T>>;
     
@@ -89,18 +102,10 @@ template <class T> void Set<T>::removeDuplicate(std::vector<Node<T>> * array) {
         }
     }
 }
- 
 
-// Implementazione Metodi Get Pubblici
-template <class T> unsigned int Set<T>::getID() {
-    return this->currID;
-}
-
-
-// Implementazione Metodi Ulteriori Pubblici
 template <class T> Set<T> * Set<T>::unionOperation(Set<T> * secondSet) {
     Set<T> * resultSet = new Set<T>();
-    resultSet->setID(getID());
+    resultSet->setID(getCounterID());
     
     std::vector<Node<T>> * firstSetArray = this->buildSortedArray();
     std::vector<Node<T>> * secondSetArray = secondSet->buildSortedArray();
@@ -118,7 +123,7 @@ template <class T> Set<T> * Set<T>::unionOperation(Set<T> * secondSet) {
 
 template <class T> Set<T> * Set<T>::intersectOperation(Set<T> * secondSet) {
     Set<T> * resultSet = new Set<T>();
-    resultSet->setID(getID());
+    resultSet->setID(getCounterID());
     
     std::vector<Node<T>> * firstSetArray = this->buildSortedArray();
     std::vector<Node<T>> * secondSetArray = secondSet->buildSortedArray();
@@ -149,7 +154,7 @@ template <class T> Set<T> * Set<T>::intersectOperation(Set<T> * secondSet) {
 
 template <class T> Set<T> * Set<T>::differenceOperation(Set<T> * secondSet) {
     Set<T> * resultSet = new Set<T>();
-    resultSet->setID(getID());
+    resultSet->setID(getCounterID());
     
     std::vector<Node<T>> * firstSetArray = this->buildSortedArray();
     std::vector<Node<T>> * secondSetArray = secondSet->buildSortedArray();
@@ -183,4 +188,14 @@ template <class T> Set<T> * Set<T>::differenceOperation(Set<T> * secondSet) {
     return resultSet;
 }
 
+template <class T> void Set<T>::printSet() {
+    std::cout << "\nSet # " << getID() << ":\n";
+    this->inorderVisit(this->getRoot());
+    std::cout << "\n";
+}
+
+template <class T> void Set<T>::insertElement(int key, T data) {
+    this->insertNodeRB(key, data);
+}
+    
 #endif /* Set_hpp */

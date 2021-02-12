@@ -10,17 +10,22 @@
 
 #include "Set.hpp"
 #include <fstream>
-#include <iterator>
+#include <string>
+#include <sstream>
 
 #define streamNotOpenSuccessfully 100   //  Codice di errore relativo alla mancata apertura dello stream di input
 #define invalidUserSetChoice 200        /*
                                             Codice di errore relativo alla scelta non valida di un insieme
                                             da parte dell'utente
                                         */
+#define invalidUserSetOperationCode 300 /*
+                                            Codice di errore relativo alla scelta non valida di un'operazione
+                                            da parte dell'utente
+                                        */
 
-#define union       1
-#define intersect   2
-#define difference  3
+#define unionOperationCode       1
+#define intersectOperationCode   2
+#define differenceOperationCode  3
 
 template <class T> class Sets {
 private:
@@ -44,19 +49,21 @@ private:
     void printError(unsigned short int errorCode);  // Stampa gli errori che possono verificarsi
     bool openInputFileStream();                     // Apre lo stream di input
     void closeInputFileStream();                    // Chiude lo stream di input
-    
-    
+    bool checkInputSetID(unsigned int setID);
+    void buildSets();
     
 public:
     // Costruttore
     Sets(std::string inputFilePath) {
-        setSets(new std::vector<Set<T> *>);
         setInputFilePath(inputFilePath);
         setInputFileStream(new std::ifstream);
         if (!(openInputFileStream())) {
             printError(streamNotOpenSuccessfully);
-            return;
+            exit(EXIT_FAILURE);
         }
+        
+        setSets(new std::vector<Set<T> *>);
+        buildSets();
     }
     
     
@@ -74,7 +81,7 @@ public:
     // Metodi Ulteriori Pubblici
     void printSets();
     void printSetWithID(unsigned int setID);
-    Set<T> * requestSetOperation(unsigned int setOperationID, unsigned int firstSet, unsigned int secondSet);
+    Set<T> * requestSetOperation(unsigned int setOperationID, unsigned int firstSetID, unsigned int secondSetID);
 };
 
 
@@ -115,6 +122,9 @@ template <class T> void Sets<T>::printError(unsigned short int errorCode) {
         case invalidUserSetChoice:
             std::cout << std::endl << "Set ID not valid. Please try again..." << std::endl;
             break;
+        case invalidUserSetOperationCode:
+            std::cout << std::endl << "Set Operation Code not valid. Please try again..." << std::endl;
+            break;
         default:
             std::cout << std::endl << "Generic Error..." << std::endl;
             break;
@@ -132,26 +142,91 @@ template <class T> void Sets<T>::closeInputFileStream() {
     getInputFileStream()->close();
 }
 
-template <class T> void Sets<T>::printSets() {
-    for (auto & singleSet: *(getSets())) {
-        std::cout << "\nSet # " << singleSet->getID() << ":\n";
-        singleSet->inorderVisit(singleSet->getRoot());
+template <class T> bool Sets<T>::checkInputSetID(unsigned int setID) {
+    if (setID < 1 || setID > getSets()->size()) {
+        printError(invalidUserSetChoice);
+        return false;
     }
+    return true;
+}
+
+template <class T> void Sets<T>::buildSets() {
+    if (!(getInputFileStream()->is_open())) {
+        openInputFileStream();
+        if (!(getInputFileStream()->is_open())) {
+            printError(streamNotOpenSuccessfully);
+            std::cout << "\n...Abort\n";
+            exit(EXIT_FAILURE);
+        }
+    }
+    
+    /*
+        istringstream:
+        Input stream class to operate on strings. Objects of this class use a string buffer that
+        contains a sequence of characters. This sequence of characters can be accessed directly
+        as a string object, using member str.
+        https://www.cplusplus.com/reference/sstream/istringstream/
+     */
+    
+    std::string line;
+    while (getline(*(getInputFileStream()), line)) {
+        Set<T> * newSet = new Set<T>();
+        
+        std::istringstream is(line);
+        T singleNumber;
+        while (is >> singleNumber) {
+//            std::cout << "\nREADING: " << singleNumber;
+            newSet->insertElement(singleNumber, singleNumber);
+        }
+        
+        getSets()->push_back(newSet);
+//        std::cout << "\n\n";
+//        newSet->inorderVisit(newSet->getRoot());
+//        std::cout << "\n\n";
+    }
+    
+}
+
+template <class T> void Sets<T>::printSets() {
+    std::cout << "\n\nSets...\n";
+    for (auto & singleSet: *(getSets())) singleSet->printSet();
+    std::cout << "\n";
 }
 
 template <class T> void Sets<T>::printSetWithID(unsigned int setID) {
-    if (setID < 0 || setID >= getSets()->size()) {
-        printError(invalidUserSetChoice);
-        return;
-    }
+    if (!(checkInputSetID(setID))) return;
     
-    auto setToPrint = getSets()->at(setID);
-    std::cout << "\nSet # " << setToPrint->getID() << ":\n";
-    setToPrint->inorderVisit(setToPrint->getRoot());
+    auto setToPrint = getSets()->at(setID - 1);
+    setToPrint->printSet();
 }
 
-//template <class T> Set<T> * Sets<T>::requestSetOperation(unsigned int setOperationID, unsigned int firstSet, unsigned int secondSet) {
-//
-//}
+template <class T> Set<T> * Sets<T>::requestSetOperation(unsigned int setOperationID, unsigned int firstSetID, unsigned int secondSetID) {
+    if (!(checkInputSetID(firstSetID))) return nullptr;
+    if (!(checkInputSetID(secondSetID))) return nullptr;
+    
+    Set<T> * resultSet = new Set<T>();
+    Set<T> * firstSet = getSets()->at(firstSetID - 1);
+    Set<T> * secondSet = getSets()->at(secondSetID - 1);
+    
+    switch (setOperationID) {
+        case unionOperationCode:
+            resultSet = firstSet->unionOperation(secondSet);
+            break;
+        case intersectOperationCode:
+            resultSet = firstSet->intersectOperation(secondSet);
+            break;
+        case differenceOperationCode:
+            resultSet = firstSet->differenceOperation(secondSet);
+            break;
+        default:
+            delete resultSet;
+            printError(invalidUserSetOperationCode);
+            return nullptr;
+            break;
+    }
+    
+    getSets()->push_back(resultSet);
+    return resultSet;
+}
 
 #endif /* Sets_hpp */

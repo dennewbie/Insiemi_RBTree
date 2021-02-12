@@ -82,6 +82,7 @@ public:
 // Implementazione Distruttore
 template <class T> BinarySearchTree<T>::~BinarySearchTree() {
     while (this->getRoot() != getNilTNode()) deleteNode(getRoot());
+    delete getNilTNode();
 }
 
 

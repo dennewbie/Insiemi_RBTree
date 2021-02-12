@@ -61,7 +61,7 @@ int main() {
     std::cout << "SUCC: " << bst.getSuccessor(bst.getRoot())->getKey() << "\n";
     Node<float> *searchedNode = bst.searchNode(0, bst.getRoot());
  */
-    
+/*
     RedBlackTree<float> redBlackTree = RedBlackTree<float>();
     
     redBlackTree.insertNodeRB(7, 20.0);
@@ -108,6 +108,62 @@ int main() {
     std::cout << "\n\n";
     
 
+    
+    Node<float> temp_1 = Node<float>(2, 10.33);
+    Node<float> temp_2 = Node<float>(3, 10.33);
+    Node<float> temp_3 = Node<float>(6, 10.33);
+    Node<float> temp_4 = Node<float>(8, 10.33);
+    Node<float> temp_5 = Node<float>(9, 10.33);
+    
+    Node<float> temp_6 = Node<float>(1, 10.33);
+    Node<float> temp_7 = Node<float>(3, 10.33);
+    Node<float> temp_8 = Node<float>(7, 10.33);
+    Node<float> temp_9 = Node<float>(10, 10.33);
+    
     Set<float> tempSet = Set<float>();
+    std::vector<Node<float>> * tempVec_1 = new std::vector<Node<float>>;
+    tempVec_1->push_back(temp_1);
+    tempVec_1->push_back(temp_2);
+    tempVec_1->push_back(temp_3);
+    tempVec_1->push_back(temp_4);
+    tempVec_1->push_back(temp_5);
+    
+    std::vector<Node<float>> * tempVec_2 = new std::vector<Node<float>>;
+    tempVec_2->push_back(temp_6);
+    tempVec_2->push_back(temp_7);
+    tempVec_2->push_back(temp_8);
+    tempVec_2->push_back(temp_9);
+    
+    std::vector<Node<float>> * tempVec_3 = tempSet.merge(tempVec_1, tempVec_2);
+    for (auto it: *tempVec_3) {
+        std::cout << it.getKey() << "\n";
+    }
+    */
+    
+    
+    Set<float> * tempSet_1 = new Set<float>();
+    Set<float> * tempSet_2 = new Set<float>();
+    
+    tempSet_1->insertNodeRB(7, 20.0);
+    tempSet_1->insertNodeRB(10, 20.0);
+    tempSet_1->insertNodeRB(13, 20.0);
+    tempSet_1->insertNodeRB(14, 20.0);
+    tempSet_1->insertNodeRB(16, 20.0);
+    tempSet_1->insertNodeRB(18, 20.0);
+    
+    tempSet_2->insertNodeRB(11, 20.0);
+    tempSet_2->insertNodeRB(14, 20.0);
+    tempSet_2->insertNodeRB(18, 20.0);
+    tempSet_2->insertNodeRB(20, 20.0);
+    
+    Set<float> * tempSet_3 = new Set<float>();
+    tempSet_3 = tempSet_1->unionOperation(tempSet_2);
+    
+    tempSet_3->inorderVisit(tempSet_3->getRoot());
+    
+
+    Set<float> * tempSet_4 = new Set<float>();
+    
+    std::cout << "\nhere";
     return 0;
 }

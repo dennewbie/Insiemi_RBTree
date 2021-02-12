@@ -92,7 +92,7 @@ template <class T> void BinarySearchTree<T>::transplant(Node<T> * to, Node<T> * 
 }
 
 template <class T> void BinarySearchTree<T>::inorderVisitBuildArray(Node <T> * current, std::vector<Node<T>> * sortedArray) {
-    if (current != getNilTNode()) {
+    if (current != getNilTNode() && current != nullptr) {
         if (current->getLeft() != getNilTNode()) inorderVisitBuildArray(current->getLeft(), sortedArray);
         sortedArray->push_back(*current);
         if (current->getRight() != getNilTNode()) inorderVisitBuildArray(current->getRight(), sortedArray);

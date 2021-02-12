@@ -156,14 +156,21 @@ int main() {
     tempSet_2->insertNodeRB(18, 20.0);
     tempSet_2->insertNodeRB(20, 20.0);
     
+    std::cout << "\n\n";
     Set<float> * tempSet_3 = new Set<float>();
     tempSet_3 = tempSet_1->unionOperation(tempSet_2);
-    
     tempSet_3->inorderVisit(tempSet_3->getRoot());
     
-
+    std::cout << "\n\n";
     Set<float> * tempSet_4 = new Set<float>();
+    tempSet_4 = tempSet_1->intersectOperation(tempSet_2);
+    tempSet_4->inorderVisit(tempSet_4->getRoot());
     
-    std::cout << "\nhere";
+    std::cout << "\n\n";
+    Set<float> * tempSet_5 = new Set<float>();
+    tempSet_5 = tempSet_1->differenceOperation(tempSet_2);
+    tempSet_5->inorderVisit(tempSet_5->getRoot());
+    
+    std::cout << "\nhere\n  ";
     return 0;
 }

@@ -41,6 +41,7 @@ protected:
     Node<T> * advancedInsertNode(int key, T data);
     void insertNode(int key, T data);
     void deleteNode(Node<T> *  nodeToDelete);
+    void resetNilT_Node();
     
 public:
     // Costruttore che imposta la radice col nodo NIL_T
@@ -112,16 +113,6 @@ template <class T> void BinarySearchTree<T>::setRoot(Node<T> * newRoot) {
 }
 
 
-// Implementazione Metodi Get Pubblici
-template <class T> Node<T> * BinarySearchTree<T>::getRoot() {
-    return this->root;
-}
-
-template <class T> Node<T> * BinarySearchTree<T>::getNilTNode() {
-    return this->nilTNode;
-}
-
-
 // Implementazione Metodi Ulteriori Protetti
 template <class T> Node<T> * BinarySearchTree<T>::advancedInsertNode(int key, T data) {
     Node<T> * nodeToInsert = new Node<T>(key, data);
@@ -153,6 +144,7 @@ template <class T> Node<T> * BinarySearchTree<T>::advancedInsertNode(int key, T 
     
     return nodeToInsert;
 }
+
 template <class T> void BinarySearchTree<T>::insertNode(int key, T data) {
     Node<T> * nodeToInsert = new Node<T>(key, data);
     nodeToInsert->setParent(getNilTNode());
@@ -206,6 +198,20 @@ template <class T> void BinarySearchTree<T>::deleteNode(Node<T> *  nodeToDelete)
     }
     
     getNilTNode()->setParent(nullptr);
+}
+
+template <class T> void BinarySearchTree<T>::resetNilT_Node() {
+    this->getNilTNode()->setKey(0);
+}
+
+
+// Implementazione Metodi Get Pubblici
+template <class T> Node<T> * BinarySearchTree<T>::getRoot() {
+    return this->root;
+}
+
+template <class T> Node<T> * BinarySearchTree<T>::getNilTNode() {
+    return this->nilTNode;
 }
 
 

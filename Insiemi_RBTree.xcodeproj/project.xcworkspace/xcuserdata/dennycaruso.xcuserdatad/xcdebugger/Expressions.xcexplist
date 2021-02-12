@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Set&lt;float&gt;::Set():Set.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "Set&lt;float&gt;::setID(unsigned int):Set.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "Set&lt;float&gt;::merge(std::__1::vector&lt;Node&lt;float&gt;*, std::__1::allocator&lt;Node&lt;float&gt;*&gt; &gt;, std::__1::vector&lt;Node&lt;float&gt;*, std::__1::allocator&lt;Node&lt;float&gt;*&gt; &gt;):Set.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "main:main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Set&lt;float&gt;::unionOperation(Set&lt;float&gt;*):Set.hpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

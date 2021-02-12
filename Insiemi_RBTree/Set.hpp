@@ -22,7 +22,7 @@ private:
     
     
     // Metodi Ulteriori Privati
-//    Set * merge(std::vector<Node<T> * > firstSet, std::vector<Node<T> * > secondSet);
+    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
     void removeDuplicate(std::vector<Node<T>> * array);
     
 public:
@@ -42,10 +42,8 @@ public:
     Set<T> * unionOperation(Set<T> * secondSet);
     Set<T> * intersectOperation(Set<T> * secondSet);
     Set<T> * differenceOperation(Set<T> * secondSet);
-    
-    
     // Test
-    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
+//    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
 };
 
 
@@ -115,7 +113,74 @@ template <class T> Set<T> * Set<T>::unionOperation(Set<T> * secondSet) {
         resultSet->insertNodeRB(resultSetArray->at(i).getKey(), resultSetArray->at(i).getData());
     }
     
-    resultSet->getNilTNode()->setKey(0);
+    resultSet->resetNilT_Node();
+    return resultSet;
+}
+
+template <class T> Set<T> * Set<T>::intersectOperation(Set<T> * secondSet) {
+    Set<T> * resultSet = new Set<T>();
+    resultSet->setID(getID());
+    
+    std::vector<Node<T>> * firstSetArray = this->buildSortedArray();
+    std::vector<Node<T>> * secondSetArray = secondSet->buildSortedArray();
+    std::vector<Node<T>> * resultSetArray = new std::vector<Node<T>>;
+    
+    auto i = 0, j = 0;
+    while (i < firstSetArray->size() && j < secondSetArray->size()) {
+        if (firstSetArray->at(i).getKey() < secondSetArray->at(j).getKey()) {
+            i++;
+        } else if (firstSetArray->at(i).getKey() > secondSetArray->at(j).getKey()) {
+            j++;
+        } else {
+            resultSetArray->push_back(firstSetArray->at(i));
+            i++;
+            j++;
+        }
+    }
+    
+    removeDuplicate(resultSetArray);
+    
+    for (auto i = 0; i < resultSetArray->size(); i++) {
+        resultSet->insertNodeRB(resultSetArray->at(i).getKey(), resultSetArray->at(i).getData());
+    }
+    
+    resultSet->resetNilT_Node();
+    return resultSet;
+}
+
+template <class T> Set<T> * Set<T>::differenceOperation(Set<T> * secondSet) {
+    Set<T> * resultSet = new Set<T>();
+    resultSet->setID(getID());
+    
+    std::vector<Node<T>> * firstSetArray = this->buildSortedArray();
+    std::vector<Node<T>> * secondSetArray = secondSet->buildSortedArray();
+    std::vector<Node<T>> * resultSetArray = new std::vector<Node<T>>;
+    
+    auto i = 0, j = 0;
+    while (i < firstSetArray->size() && j < secondSetArray->size()) {
+        if (firstSetArray->at(i).getKey() < secondSetArray->at(j).getKey()) {
+            resultSetArray->push_back(firstSetArray->at(i));
+            i++;
+        } else if (firstSetArray->at(i).getKey() > secondSetArray->at(j).getKey()) {
+            j++;
+        } else {
+            i++;
+            j++;
+        }
+    }
+    
+    while (i < firstSetArray->size()) {
+        resultSetArray->push_back(firstSetArray->at(i));
+        i++;
+    }
+    
+    removeDuplicate(resultSetArray);
+    
+    for (auto i = 0; i < resultSetArray->size(); i++) {
+        resultSet->insertNodeRB(resultSetArray->at(i).getKey(), resultSetArray->at(i).getData());
+    }
+    
+    resultSet->resetNilT_Node();
     return resultSet;
 }
 

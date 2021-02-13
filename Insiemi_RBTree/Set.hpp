@@ -30,7 +30,9 @@ public:
     
     
     // Distruttore
-    virtual ~Set() { }
+    virtual ~Set() {
+        this->currID--;
+    }
     
     
     // Metodi Get Pubblici

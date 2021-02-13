@@ -68,7 +68,7 @@ public:
     Node<T> * getMaximum(Node<T> * current);
     Node<T> * getPredecessor(Node<T> * current);
     Node<T> * getSuccessor(Node<T> * current);
-    Node<T> * searchNode(int key, Node<T> *current);
+    Node<T> * searchNode(int key, Node<T> * current);
     
     void preorderVisit(Node <T> * current);
     void inorderVisit(Node <T> * current);

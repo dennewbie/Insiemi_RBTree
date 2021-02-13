@@ -311,8 +311,8 @@ int main() {
     
     removeDuplicate(arr);
     
-    */
     return 0;
+     */
 }
 
 /*

@@ -445,8 +445,8 @@
             filePath = "Insiemi_RBTree/BinarySearchTree.hpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -589,8 +589,8 @@
             filePath = "Insiemi_RBTree/BinarySearchTree.hpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "~BinarySearchTree()"
             landmarkType = "9">
          </BreakpointContent>
@@ -657,54 +657,6 @@
             endingLineNumber = "282"
             landmarkName = "main()"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D16997C0-B575-4DAF-8931-3CC2AD11077D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Insiemi_RBTree/main.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
-            landmarkName = "main()"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "D16997C0-B575-4DAF-8931-3CC2AD11077D - 2bfed6a9732ca43b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "Insiemi_RBTree"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dennycaruso/Desktop/ASD/progetto/esercizio_1/Insiemi_RBTree/Insiemi_RBTree/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "316"
-                  endingLineNumber = "316"
-                  offsetFromSymbolStart = "417">
-               </Location>
-               <Location
-                  uuid = "D16997C0-B575-4DAF-8931-3CC2AD11077D - 2bfed6a9732ca43b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "Insiemi_RBTree"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dennycaruso/Desktop/ASD/progetto/esercizio_1/Insiemi_RBTree/Insiemi_RBTree/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "316"
-                  endingLineNumber = "316"
-                  offsetFromSymbolStart = "447">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -38,13 +38,6 @@ protected:
     
     
     // Metodi Ulteriori Protetti
-    Node<T> * advancedInsertNode(int key, T data);
-        /*
-            Classico inserimento in un BST con l'aggiunta che restituisce un puntatore
-            di tipo Node parametrizzato da T, al nodo appena inserito nel BST
-         */
-    void insertNode(int key, T data);
-    void deleteNode(Node<T> *  nodeToDelete);
     void resetNilT_Node();
     
 public:
@@ -64,6 +57,14 @@ public:
     
     
     // Metodi Ulteriori Pubblici
+    Node<T> * advancedInsertNode(int key, T data);
+        /*
+            Classico inserimento in un BST con l'aggiunta che restituisce un puntatore
+            di tipo Node parametrizzato da T, al nodo appena inserito nel BST
+         */
+    void insertNode(int key, T data);
+    void deleteNode(Node<T> *  nodeToDelete);
+    
     Node<T> * getMinimum(Node<T> * current);
     Node<T> * getMaximum(Node<T> * current);
     Node<T> * getPredecessor(Node<T> * current);
@@ -125,6 +126,10 @@ template <class T> void BinarySearchTree<T>::inorderVisitBuildArray(Node <T> * c
         sortedArray->push_back(*current);
         if (current->getRight() != getNilTNode()) inorderVisitBuildArray(current->getRight(), sortedArray);
     }
+}
+
+template <class T> void BinarySearchTree<T>::resetNilT_Node() {
+    this->getNilTNode()->setKey(0);
 }
 
 template <class T> Node<T> * BinarySearchTree<T>::advancedInsertNode(int key, T data) {
@@ -211,10 +216,6 @@ template <class T> void BinarySearchTree<T>::deleteNode(Node<T> *  nodeToDelete)
     }
     
     getNilTNode()->setParent(nullptr);
-}
-
-template <class T> void BinarySearchTree<T>::resetNilT_Node() {
-    this->getNilTNode()->setKey(0);
 }
 
 template <class T> Node<T> * BinarySearchTree<T>::getMinimum(Node<T> * current) {

@@ -50,7 +50,16 @@ private:
     bool openInputFileStream();                     // Apre lo stream di input
     void closeInputFileStream();                    // Chiude lo stream di input
     bool checkInputSetID(unsigned int setID);
+        /*
+            Verifica che l'insieme (mediante identificativo) scelto dall'utente,
+            sia valido o meno.
+         */
     void buildSets();
+        /*
+            Costruisce a partire dal file di input prescelto, gli insiemi e li
+            inserisce all'interno del vector di puntatori a insiemi parametrizzati
+            dal parametro T
+         */
     
 public:
     // Costruttore
@@ -82,6 +91,12 @@ public:
     void printSets();
     void printSetWithID(unsigned int setID);
     Set<T> * requestSetOperation(unsigned int setOperationID, unsigned int firstSetID, unsigned int secondSetID);
+    /*
+        Permette di eseguire le operazioni insiemistiche. In particolar modo
+        se i parametri sono validi, esegue l'operazione identificata da setOperationID,
+        tra l'insieme identificato da firstSetID e l'insieme identificato da
+        secondSetID
+     */
 };
 
 
@@ -162,10 +177,10 @@ template <class T> void Sets<T>::buildSets() {
     
     /*
         istringstream:
-        Input stream class to operate on strings. Objects of this class use a string buffer that
-        contains a sequence of characters. This sequence of characters can be accessed directly
-        as a string object, using member str.
-        https://www.cplusplus.com/reference/sstream/istringstream/
+            Input stream class to operate on strings. Objects of this class use a string buffer that
+            contains a sequence of characters. This sequence of characters can be accessed directly
+            as a string object, using member str.
+            https://www.cplusplus.com/reference/sstream/istringstream/
      */
     
     std::string line;

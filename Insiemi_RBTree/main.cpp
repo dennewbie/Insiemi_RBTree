@@ -7,6 +7,8 @@
 
 #include "Sets.hpp"
 
+//void removeDuplicate(std::vector<Node<int>> * array);
+
 int main() {
 /*
     Node<float> * temp_1 = new Node<float>(3, 10.33);
@@ -236,6 +238,7 @@ int main() {
     temp_Sets_1.printSets();
     */
     
+    
     const char * usrMenuMessage =   "\n\n\nBenvenuti a 'Insiemi implementati con alberi Red  Black' ...\n\nGli insiemi presenti nel file caricato sono i seguenti. "
                                     "Inserisci l'ID di un primo \ninsieme, poi l'ID di un secondo insieme e infine l'operazione che vuoi eseguire \nfra questi due insiemi.";
     
@@ -293,4 +296,32 @@ int main() {
         }
     } while (usrContinue == 'Y' || usrContinue == 'y');
     return 0;
+    
+    
+    /*
+     TEST REMOVE DUPLICATE:
+     
+    std::vector<Node<int>> * arr = new std::vector<Node<int>>;
+    arr->push_back(Node<int>(5, 5));
+    arr->push_back(Node<int>(5, 5));
+    arr->push_back(Node<int>(5, 5));
+    arr->push_back(Node<int>(5, 5));
+    arr->push_back(Node<int>(5, 5));
+    arr->push_back(Node<int>(5, 5));
+    
+    removeDuplicate(arr);
+    
+    */
+    return 0;
 }
+
+/*
+void removeDuplicate(std::vector<Node<int>> * array) {
+    for (auto i = 1; i < array->size(); i++) {
+        if (array->at(i - 1).getKey() == array->at(i).getKey()) {
+            array->erase(array->begin() + i);
+            i--;
+        }
+    }
+}
+*/

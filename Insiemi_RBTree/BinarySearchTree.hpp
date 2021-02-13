@@ -39,6 +39,10 @@ protected:
     
     // Metodi Ulteriori Protetti
     Node<T> * advancedInsertNode(int key, T data);
+        /*
+            Classico inserimento in un BST con l'aggiunta che restituisce un puntatore
+            di tipo Node parametrizzato da T, al nodo appena inserito nel BST
+         */
     void insertNode(int key, T data);
     void deleteNode(Node<T> *  nodeToDelete);
     void resetNilT_Node();

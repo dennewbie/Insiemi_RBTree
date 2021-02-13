@@ -49,7 +49,7 @@ public:
     // Costruttore custom con impostazione del campo key, data e color
     Node(int key, T data) : parent { nullptr }, left { nullptr }, right { nullptr } {
         setKey(key);
-        setColor(BLACK);  // doubt here <???> there wasn't on code of lesson exercise #14.1
+        setColor(BLACK);
         setData(data);
         /*
          

@@ -22,7 +22,15 @@ private:
     
     // Metodi Ulteriori Privati
     std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
+        /*
+            Metodo che permette di unire due vector di Node parametrizzati da T passati come parametri
+            sotto forma di puntatori. Restituisce un puntatore a un vector di Node parametrizzati da T
+         */
     void removeDuplicate(std::vector<Node<T>> * array);
+        /*
+            Metodo che permette di rimuove i duplicati dal vector di Node parametrizzati da T
+            passatogli come parametro sotto forma di puntatore
+         */
     
 public:
     // Costruttore
@@ -44,14 +52,26 @@ public:
     Set<T> * unionOperation(Set<T> * secondSet);
     Set<T> * intersectOperation(Set<T> * secondSet);
     Set<T> * differenceOperation(Set<T> * secondSet);
+        /*
+            Operazioni Insiemistiche di Unione, Intersezione e Differenza.
+            Ognuna di esse prende come parametro il secondo insieme sotto forma di puntatore.
+            Ognuna fa la relativa operazione con l'insieme sul quale il metodo è invocato.
+            Ognuna restituisce un puntatore a Set parametrizzato da T
+         */
     void printSet();
+        /*
+            Stampa l'insieme in maniera ordinata grazie a una visita inorder
+         */
     void insertElement(int key, T data);
+        /*
+            Inserisce un elemento composto da chiave e data all'interno di un insieme
+         */
     // Test
 //    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
 };
 
 
-// Inizializzazione contatore Set
+// Inizializzazione contatore classe Set
 template <class T> unsigned int Set<T>::currID = 1;
 
 
@@ -101,6 +121,7 @@ template <class T> void Set<T>::removeDuplicate(std::vector<Node<T>> * array) {
     for (auto i = 1; i < array->size(); i++) {
         if (array->at(i - 1).getKey() == array->at(i).getKey()) {
             array->erase(array->begin() + i);
+            i--;
         }
     }
 }

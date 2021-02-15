@@ -10,7 +10,7 @@
 
 #include "RedBlackTree.hpp"
 
-template <class T> class Set: private /*public*/ RedBlackTree<T> {
+template <class T> class Set: private RedBlackTree<T> {
 private:
     static unsigned int currID;     // Contatore
     unsigned int ID;                // Codice identificativo univoco dell'insieme
@@ -66,8 +66,6 @@ public:
         /*
             Inserisce un elemento composto da chiave e data all'interno di un insieme
          */
-    // Test
-//    std::vector<Node<T>> * merge(std::vector<Node<T>> * firstSet, std::vector<Node<T>> * secondSet);
 };
 
 

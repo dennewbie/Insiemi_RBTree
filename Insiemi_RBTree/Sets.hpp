@@ -190,14 +190,10 @@ template <class T> void Sets<T>::buildSets() {
         std::istringstream is(line);
         T singleNumber;
         while (is >> singleNumber) {
-//            std::cout << "\nREADING: " << singleNumber;
             newSet->insertElement(singleNumber, singleNumber);
         }
         
         getSets()->push_back(newSet);
-//        std::cout << "\n\n";
-//        newSet->inorderVisit(newSet->getRoot());
-//        std::cout << "\n\n";
     }
     
 }

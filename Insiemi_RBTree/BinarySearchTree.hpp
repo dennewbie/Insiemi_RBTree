@@ -109,7 +109,7 @@ template <class T> Node<T> * BinarySearchTree<T>::getNilTNode() {
 
 // Implementazione Metodi Ulteriori
 template <class T> void BinarySearchTree<T>::transplant(Node<T> * to, Node<T> * from) {
-    if (to->getParent() == getNilTNode()) {
+    if (to->getParent() == getNilTNode() || to->getParent() == nullptr) {
         setRoot(from);
     } else if (to == (to->getParent())->getLeft()) {
         (to->getParent())->setLeft(from);

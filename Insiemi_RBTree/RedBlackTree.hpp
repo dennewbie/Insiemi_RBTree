@@ -146,8 +146,6 @@ template <class T> void RedBlackTree<T>::deleteFixUpRB(Node<T> * x) {
 }
 
 template <class T> void RedBlackTree<T>::insertNodeRB(int key, T data) {
-//    this->insertNode(key, data);
-//    Node<T> * x = this->searchNode(key, this->getRoot());
     Node<T> * x = this->advancedInsertNode(key, data);
     x->setColor(RED);
     
@@ -195,7 +193,6 @@ template <class T> void RedBlackTree<T>::insertNodeRB(int key, T data) {
 }
 
 template <class T> void RedBlackTree<T>::deleteNodeRB(Node<T> * z) {
-//    Node<T> * z = this->searchNode(key, this->getRoot());
     Node<T> * x;
     Node<T> * y;
     

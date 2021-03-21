@@ -6,7 +6,7 @@ Progettare ed implementare una struttura dati basata su alberi Red Black in cui 
 
 -  UNION()
 - INTERSECT() 
-- DIFFERENCE(). 
+- DIFFERENCE()
 
 Gli elementi degli insiemi (numeri interi) sono memorizzati all’interno di un file di testo. 
 Gli elementi appartenenti ad uno stesso insieme si trovano su una stessa riga separati da uno spazio (righe successive corrispondono ai diversi insiemi). 
